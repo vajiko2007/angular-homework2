@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="aplications-list.component.scss">
+</head>
+<body>
+
+<div *ngFor="let user of users">
+  <div>Name: {{ user.name }}</div>
+  <div>Last Name: {{ user.lastname }}</div>
+  <div>Birthdate: {{ user.birthdate }}</div>
+  <div>Phone Number: {{ user.phonenumber }}</div>
+  <div>Address: {{ user.address.address }},</div>
+  <div>City: {{ user.address.city }},</div>
+  <div>
+    <h3>Skills</h3>
+    <ul>
+      <li *ngFor="let skill of user.skills">{{ skill.skill }}</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Work Experience</h3>
+    <div *ngFor="let workexperience of user.workexperience">
+      <div>Workplace: {{ workexperience.workplace }}</div>
+      <div>Position: {{ workexperience.position }}</div>
+      <div>Work Year: {{ workexperience.workyear }}</div>
+    </div>
+  </div>
+</div>
+<div>
+  <a class="container" routerLink="">Home</a>
+</div>
+
+</body>
+</html>

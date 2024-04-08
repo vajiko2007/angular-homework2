@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="registration.component.scss">
+  <title>Document</title>
+</head>
+<body>
+<div class="title">REGISTRATION FORM</div>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" placeholder="Name">
+  </div>
+  <div>
+    <label for="lastname">Lastname</label>
+    <input type="text" id="lastname" formControlName="lastname" placeholder="Lastname">
+  </div>
+  <div>
+    <label for="birthdate">Birthdate</label>
+    <input type="date" id="birthdate" formControlName="birthdate" placeholder="Birthdate">
+  </div>
+  <div>
+    <label for="phonenumber">Phonenumber</label>
+    <input type="number" id="phonenumber" formControlName="phonenumber" placeholder="Phonenumber">
+  </div>
+  <div formGroupName="address">
+    <div>
+      <label for="address">Addres</label>
+      <input type="text" id="address" formControlName="address" placeholder="Address">
+    </div>
+    <div>
+      <label for="city">City</label>
+      <input type="text" id="city" formControlName="city" placeholder="City">
+    </div>
+  </div>
+  <button (click)="addskill()">Add Skill</button>
+  <div formArrayName="skills">
+    @for (control of skills.controls; track control; let i = $index) {
+      <div [formGroupName]="i">
+        <label for="skill">Skills</label>
+        <input type="text" id="skill" formControlName="skill" placeholder="Skill">
+        <button class="remove_skill" (click)="removeSkill(i)">Remove</button>
+      </div>
+    }
+  </div>
+    <button (click)="addworkexperience()">Add Work Experience</button>
+    <div formArrayName="workexperience">
+      @for (control of workexperience.controls; track control; let j = $index) {
+        <div [formGroupName]="j">
+          <label for="workplace">Workplace</label>
+          <input type="text" id="workplace" formControlName="workplace" placeholder="workplace">
+          <label for="position">Position</label>
+          <input type="text" id="position" formControlName="position" placeholder="Position">
+          <label for="workyear">Workyear</label>
+          <input type="number" id="workyear" formControlName="workyear" placeholder="Workyear">
+          <button class="remove_skill" (click)="removeworkexperience(j)">Remove Work Experience</button>
+        </div>
+      }
+    </div>
+    <div>
+      <button (click)="submit()">Submit</button>
+    </div>
+</form>
+
+<div class="container">
+  <div class="links">
+    <a routerLink="">Home</a>
+    <a routerLink="aplications-list">aplications</a>
+  </div>
+</div>
+
+</body>
+</html>
